@@ -34,69 +34,90 @@ Things you may want to cover:
 - コメント機能
 - 検索機能
 
-# テーブル設計
+# テーブル設計  
 
 ## users テーブル
 
-| Type | Column | Options |
-| ---- | ------ | ------- |
-| t.string | :nickname,  | null: false |
-| t.string | :email, | null: false|
-| t.string | :password, | null: false |
-| t.string | :password_confiremation, | null: false |
-| t.string | :last_name, | null: false |
-| t.string | :first_name, | null: false |
-| t.string | :last_name_kana, | null: false |
-| t.string | :first_name_kana, | null: false |
-| t.date | :birthday, null: | false |
+| Type | Column | Options | Options |
+| ---- | ------ | ------- | ------- |
+| string | nickname | null false |
+| string | email | null false| unique true |
+| string | encrypted_password | null false |
+| string | last_name | null false |
+| string | first_name | null false |
+| string | last_name_kana | null false |
+| string | first_name_kana | null false |
+| date | birthday | null false |
+
+## アソシエーション 
+
+| has_many items |
+| has_many pay_forms |
+| has_many coment_users |
+| has_many comments | through room_users |
 
 ## items テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
 | image | activestorage |
-| t.string | :name, | null: false |
-| t.text | :info, | null: false |
-| t.integer | :category_id, | null: false |
-| t.integer | :sales_status_id, | null: false |
-| t.integer | :shipping_fee_status_id, | null: false |
-| t.integer | :prefecture_id, | null: false |
-| t.integer | :scheduled_delivery_id, | null: false |
-| t.integer | :price, | null: false |
-| t.references |:user, | foreign_key: true |
+| string | name | null false |
+| text | info | null false |
+| integer | category_id | null false |
+| integer | sales_status_id | null false |
+| integer | shipping_fee_status_id | null false |
+| integer | prefecture_id, | null false |
+| integer | scheduled_delivery_id | null false |
+| integer | price | null false |
+| references |user | foreign_key true |
+
+## アソシエーション
+
+| belongs_to user |
+| belongs_to payform |
+| has_many comments |
 
 ## pay_forms テーブル
 
-| Type | Column | Options |
-| ---- | ------ | ------- |
-| t.references | :number, foreign_key: true |
-| t.references | :exp_month, foreign_key: true |
-| t.references | :exp_year, foreign_key: true |
-| t.references | :cvc, foreign_key: true |
-| t.string | :email, | null: false |
-| t.integer | :postal_code, | null: false |
-| t.varchar | :prefecture, | null: false |
-| t.integer | :city, | null: false |
-| t.varchar | :addresses, | null: false |
-| t.varchar | :building |
-| t.bigint | :phone_number, | null: false |
-| t.references | :user, | null: false, | foreign_key: true |
-| t.references |:item, | null: false, | foreign_key: true |
+| Type | Column | Options | Options2 |
+| ---- | ------ | ------- | ------- |
+| integer | postal_code | null false |
+| integer | prefecture_id | null false |
+| string | city | null false |
+| string | addresses | null false |
+| string | building |
+| string | phone_number | null false |
+| references | user | null false | foreign_key true |
+| references |item | null false | foreign_key true |
+
+| belongs_to :user |
+| belongs_to :item |
 
 ## comments テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
-| t.text | :text, | null: false |
-| t.references| :user, | foreign_key: true |
-| t.references | :item, | foreign_key: true |
+| text | text | null false |
+| references| user | foreign_key true |
+| references | item | foreign_key true |
+
+## アソシエーション
+
+| has_many comment_users |
+| has_many users | through comment_users |
+| belongs_to item |
 
 ## comment_users テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
-| t.references | :comment, | foreign_key: true |
-| t.references | :user, | foreign_key: true |
+| references | comment, | foreign_key true |
+| references | user | foreign_key true |
+
+## アソシエーション
+
+| belongs_to comment |
+| belongs_to user |
 
 # テストコード
 - Rspec
