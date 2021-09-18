@@ -36,6 +36,9 @@ Things you may want to cover:
 
 # テーブル設計  
 
+## ER図
+[![Image from Gyazo](https://i.gyazo.com/b0217f3cadb11ef6e9f8ee62a0f36b83.png)](https://gyazo.com/b0217f3cadb11ef6e9f8ee62a0f36b83)
+
 ## users テーブル
 
 | Type | Column | Options | Options |
@@ -53,8 +56,7 @@ Things you may want to cover:
 
 | has_many items |
 | has_many pay_forms |
-| has_many coment_users |
-| has_many comments | through room_users |
+| has_many comments |
 
 ## items テーブル
 
@@ -69,13 +71,15 @@ Things you may want to cover:
 | integer | prefecture_id, | null false |
 | integer | scheduled_delivery_id | null false |
 | integer | price | null false |
-| references |user | foreign_key true |
+| references | user | foreign_key true |
 
 ## アソシエーション
 
 | belongs_to user |
-| belongs_to payform |
+| has_one pay_form_item |
+| has_one pay_form | through pay_form_item |
 | has_many comments |
+
 
 ## pay_forms テーブル
 
@@ -90,8 +94,22 @@ Things you may want to cover:
 | references | user | null false | foreign_key true |
 | references |item | null false | foreign_key true |
 
+## アソシエーション
+
 | belongs_to :user |
 | belongs_to :item |
+
+## pay_form_items テーブル
+
+| Type | Column | Options |
+| ---- | ------ | ------- |
+| references | pay_form | foreign_key true |
+| references | item | foreign_key true |
+
+## アソシエーション
+
+| belongs_to pay_form |
+| belongs_to item | through pay_form_item |
 
 ## comments テーブル
 
@@ -103,21 +121,9 @@ Things you may want to cover:
 
 ## アソシエーション
 
-| has_many comment_users |
-| has_many users | through comment_users |
+| belongs_to users |
 | belongs_to item |
 
-## comment_users テーブル
-
-| Type | Column | Options |
-| ---- | ------ | ------- |
-| references | comment, | foreign_key true |
-| references | user | foreign_key true |
-
-## アソシエーション
-
-| belongs_to comment |
-| belongs_to user |
 
 # テストコード
 - Rspec
