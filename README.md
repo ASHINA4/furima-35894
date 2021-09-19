@@ -23,6 +23,9 @@ Things you may want to cover:
 
 * ...
 
+
+
+
 # 機能一覧
 
 - ユーザー登録、ログイン機能(devise)
@@ -34,10 +37,16 @@ Things you may want to cover:
 - コメント機能
 - 検索機能
 
+
+
+
 # テーブル設計  
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/b0217f3cadb11ef6e9f8ee62a0f36b83.png)](https://gyazo.com/b0217f3cadb11ef6e9f8ee62a0f36b83)
+[![Image from Gyazo](https://i.gyazo.com/3d5def0349dfbde700e1d0d08132c897.png)](https://gyazo.com/3d5def0349dfbde700e1d0d08132c897)
+
+
+
 
 ## users テーブル
 
@@ -55,14 +64,16 @@ Things you may want to cover:
 ## アソシエーション 
 
 | has_many items |
-| has_many pay_forms |
+| has_many order_history |
 | has_many comments |
+
+
+
 
 ## items テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
-| image | activestorage |
 | string | name | null false |
 | text | info | null false |
 | integer | category_id | null false |
@@ -76,30 +87,13 @@ Things you may want to cover:
 ## アソシエーション
 
 | belongs_to user |
-| has_one pay_form_item |
-| has_one pay_form | through pay_form_item |
+| has_one order_history |
 | has_many comments |
 
 
-## pay_forms テーブル
 
-| Type | Column | Options | Options2 |
-| ---- | ------ | ------- | ------- |
-| integer | postal_code | null false |
-| integer | prefecture_id | null false |
-| string | city | null false |
-| string | addresses | null false |
-| string | building |
-| string | phone_number | null false |
-| references | user | null false | foreign_key true |
-| references |item | null false | foreign_key true |
 
-## アソシエーション
-
-| belongs_to :user |
-| belongs_to :item |
-
-## pay_form_items テーブル
+## order history テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
@@ -108,8 +102,32 @@ Things you may want to cover:
 
 ## アソシエーション
 
-| belongs_to pay_form |
-| belongs_to item | through pay_form_item |
+| belongs_to user |
+| belongs_to item |
+| has_one addresses |
+
+
+
+
+## addresses テーブル
+
+| Type | Column | Options | Options2 |
+| ---- | ------ | ------- | ------- |
+| string | postal_code | null false |
+| integer | prefecture_id | null false |
+| string | city | null false |
+| string | block | null false |
+| string | building |
+| string | phone_number | null false |
+| references | user | null false | foreign_key true |
+| references |item | null false | foreign_key true |
+
+## アソシエーション
+
+| belongs_to order_history |
+
+
+
 
 ## comments テーブル
 
@@ -123,6 +141,8 @@ Things you may want to cover:
 
 | belongs_to users |
 | belongs_to item |
+
+
 
 
 # テストコード
