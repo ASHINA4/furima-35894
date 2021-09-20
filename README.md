@@ -43,14 +43,14 @@ Things you may want to cover:
 # テーブル設計  
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/3d5def0349dfbde700e1d0d08132c897.png)](https://gyazo.com/3d5def0349dfbde700e1d0d08132c897)
+[![Image from Gyazo](https://i.gyazo.com/454a57f2a6e7bbeb96c9060da935805d.png)](https://gyazo.com/454a57f2a6e7bbeb96c9060da935805d)
 
 
 
 
 ## users テーブル
 
-| Type | Column | Options | Options |
+| Type | Column | Options | Options2 |
 | ---- | ------ | ------- | ------- |
 | string | nickname | null false |
 | string | email | null false| unique true |
@@ -64,7 +64,7 @@ Things you may want to cover:
 ## アソシエーション 
 
 | has_many items |
-| has_many order_historys |
+| has_many order_histories |
 | has_many comments |
 
 
@@ -72,8 +72,8 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Type | Column | Options | Options2 |
-| ---- | ------ | ------- | -------- |
+| Type | Column | Options |
+| ---- | ------ | ------- |
 | string | name | null false |
 | text | info | null false |
 | integer | category_id | null false |
@@ -82,7 +82,7 @@ Things you may want to cover:
 | integer | prefecture_id | null false |
 | integer | scheduled_delivery_id | null false |
 | integer | price | null false |
-| references | user | null false |foreign_key true |
+| references | user | foreign_key true, null false |
 
 ## アソシエーション
 
@@ -91,12 +91,14 @@ Things you may want to cover:
 | has_many comments |
 
 
-## order historys テーブル
+
+
+## order histories テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
-| references | user | foreign_key true |
-| references | item | foreign_key true |
+| references | user | foreign_key true, null false |
+| references | item | foreign_key true, null false |
 
 ## アソシエーション
 
@@ -111,12 +113,14 @@ Things you may want to cover:
 
 | Type | Column | Options | Options2 |
 | ---- | ------ | ------- | ------- |
+| string | order_history_id | null false |
 | string | postal_code | null false |
 | integer | prefecture_id | null false |
 | string | city | null false |
 | string | block | null false |
 | string | building |
 | string | phone_number | null false |
+
 
 ## アソシエーション
 
@@ -130,12 +134,12 @@ Things you may want to cover:
 | Type | Column | Options |
 | ---- | ------ | ------- |
 | text | text | null false |
-| references| user | foreign_key true |
-| references | item | foreign_key true |
+| references| user | foreign_key true, null false |
+| references | item | foreign_key true, null false |
 
 ## アソシエーション
 
-| belongs_to users |
+| belongs_to user |
 | belongs_to item |
 
 
