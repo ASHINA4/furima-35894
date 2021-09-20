@@ -43,9 +43,7 @@ Things you may want to cover:
 # テーブル設計  
 
 ## ER図
-[![Image from Gyazo](https://i.gyazo.com/454a57f2a6e7bbeb96c9060da935805d.png)](https://gyazo.com/454a57f2a6e7bbeb96c9060da935805d)
-
-
+[![Image from Gyazo](https://i.gyazo.com/8229ca8ad659309d278ce0f20ea7db68.png)](https://gyazo.com/8229ca8ad659309d278ce0f20ea7db68)
 
 
 ## users テーブル
@@ -113,13 +111,13 @@ Things you may want to cover:
 
 | Type | Column | Options | Options2 |
 | ---- | ------ | ------- | ------- |
-| string | order_history_id | null false |
 | string | postal_code | null false |
 | integer | prefecture_id | null false |
 | string | city | null false |
 | string | block | null false |
 | string | building |
 | string | phone_number | null false |
+| references | order_history | foreign_key true, null false |
 
 
 ## アソシエーション
