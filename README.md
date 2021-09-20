@@ -64,7 +64,7 @@ Things you may want to cover:
 ## アソシエーション 
 
 | has_many items |
-| has_many order_history |
+| has_many order_historys |
 | has_many comments |
 
 
@@ -72,17 +72,17 @@ Things you may want to cover:
 
 ## items テーブル
 
-| Type | Column | Options |
-| ---- | ------ | ------- |
+| Type | Column | Options | Options2 |
+| ---- | ------ | ------- | -------- |
 | string | name | null false |
 | text | info | null false |
 | integer | category_id | null false |
 | integer | sales_status_id | null false |
 | integer | shipping_fee_status_id | null false |
-| integer | prefecture_id, | null false |
+| integer | prefecture_id | null false |
 | integer | scheduled_delivery_id | null false |
 | integer | price | null false |
-| references | user | foreign_key true |
+| references | user | null false |foreign_key true |
 
 ## アソシエーション
 
@@ -91,20 +91,18 @@ Things you may want to cover:
 | has_many comments |
 
 
-
-
-## order history テーブル
+## order historys テーブル
 
 | Type | Column | Options |
 | ---- | ------ | ------- |
-| references | pay_form | foreign_key true |
+| references | user | foreign_key true |
 | references | item | foreign_key true |
 
 ## アソシエーション
 
 | belongs_to user |
 | belongs_to item |
-| has_one addresses |
+| has_one address |
 
 
 
@@ -119,8 +117,6 @@ Things you may want to cover:
 | string | block | null false |
 | string | building |
 | string | phone_number | null false |
-| references | user | null false | foreign_key true |
-| references |item | null false | foreign_key true |
 
 ## アソシエーション
 

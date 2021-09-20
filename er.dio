@@ -13,7 +13,7 @@
                 <mxCell id="27" value="itemsテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="490" y="40" width="260" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="28" value="image activestorage&#10;t.string :name,           null: false&#10;t.text :info, null: false&#10;t.integer :category_id, null: false&#10;t.integer :sales_status_id, null: false&#10;t.integer :shipping_fee_status_id, null: false&#10;t.integer :prefecture_id, null: false&#10;t.integer :scheduled_delivery_id, null: false&#10;      t.integer :price, null: false&#10;t.references :user, foreign_key: true&#10;販売手数料&#10;販売利益&#10;&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="27" vertex="1">
+                <mxCell id="28" value="image activestorage&#10;t.string :name,           null: false&#10;t.text :info, null: false&#10;t.integer :category_id, null: false&#10;t.integer :sales_status_id, null: false&#10;t.integer :shipping_fee_status_id, null: false&#10;t.integer :prefecture_id, null: false&#10;t.integer :scheduled_delivery_id, null: false&#10;      t.integer :price, null: false&#10;t.references :user, null: false, foreign_key: true&#10;販売手数料&#10;販売利益&#10;&#10;&#10;&#10;" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="27" vertex="1">
                     <mxGeometry y="26" width="260" height="174" as="geometry"/>
                 </mxCell>
                 <mxCell id="31" value="addressesテーブル" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
@@ -68,7 +68,7 @@
                 <mxCell id="67" value="order_historys" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;align=center;fontSize=14;" parent="1" vertex="1">
                     <mxGeometry x="100" y="400" width="240" height="70" as="geometry"/>
                 </mxCell>
-                <mxCell id="68" value="t.references :pay_form, foreign_key: true&#10;t.references :item, foreign_key: true" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="67" vertex="1">
+                <mxCell id="68" value="t.references :user, foreign_key: true&#10;t.references :item, foreign_key: true" style="text;strokeColor=none;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=12;" parent="67" vertex="1">
                     <mxGeometry y="26" width="240" height="44" as="geometry"/>
                 </mxCell>
                 <mxCell id="71" value="" style="edgeStyle=orthogonalEdgeStyle;fontSize=12;html=1;endArrow=ERone;endFill=1;startArrow=ERone;startFill=0;" parent="1" target="28" edge="1">
