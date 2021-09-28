@@ -4,7 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :nickname, presence: true
+  validates :nickname, :birthday, presence: true
   validates :encrypted_password, :password, :password_confirmation, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/ }
 
   with_options presence: true, format: { with: /\A[ぁ-ゔァ-ヴ一-龥]+\z/ } do
