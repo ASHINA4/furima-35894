@@ -3,9 +3,9 @@ FactoryBot.define do
     transient do
       person { Gimei.name }
     end
-    nickname { Faker::Name.initials( number: 3 ) }
+    nickname { Faker::Name.initials(number: 3) }
     email { Faker::Internet.free_email }
-    password { Faker::Internet.password( min_length: 6 ) }
+    password { Faker::Internet.password(min_length: 6) }
     password_confirmation { password }
     last_name { person.last.kanji }
     first_name { person.first.kanji }
