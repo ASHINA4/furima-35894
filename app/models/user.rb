@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  
+  # アソシエーションの設定
+  has_many :items
 
+  # バリデーションの設定
   validates :nickname, :birthday, presence: true
   validates :encrypted_password, :password, :password_confirmation,
             format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/ }
