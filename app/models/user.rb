@@ -8,9 +8,13 @@ class User < ApplicationRecord
   has_many :items
 
   # バリデーションの設定
-  validates :nickname, :birthday, presence: true
+  with_options presence: true do
+    validates :nickname
+    validates :birthday
+  end
+
   validates :encrypted_password, :password, :password_confirmation,
-            format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/ }
+            presence: true, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/ }
 
   with_options presence: true, format: { with: /\A[ぁ-ゔァ-ヴ一-龥]+\z/ } do
     validates :last_name
