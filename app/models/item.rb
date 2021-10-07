@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   # テーブル同士のアソシエーション
   belongs_to :user
-  
+
   # レコードとファイルを1対1の関係で紐づけるアソシエーション
   has_one_attached :image
   
@@ -18,12 +18,12 @@ class Item < ApplicationRecord
     validates :image
     validates :name, uniqueness: true, length: { maximum: 100 }
     validates :info, uniqueness: true, length: { maximum: 1000 }
-    validates :category_id, numericality: { other_than: 0 }
-    validates :sales_status_id, numericality: { other_than: 0 }
-    validates :shipping_fee_status_id, numericality: { other_than: 0 }
-    validates :prefecture_id, numericality: { other_than: 0 }
-    validates :scheduled_delivery_id, numericality: { other_than: 0 }
-    validates :price, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 9_999_999 },
+    validates :category_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :sales_status_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :shipping_fee_status_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :scheduled_delivery_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :price, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 },
               format: { with: /\A[0-9]+\z/ }
   end
 end
