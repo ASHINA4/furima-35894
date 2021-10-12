@@ -16,7 +16,7 @@ class Item < ApplicationRecord
   # バリデーションの設定
   with_options presence: true do
     validates :image
-    validates :name, uniqueness: true, length: { maximum: 100 }
+    validates :name, uniqueness: true, length: { maximum: 40 }
     validates :info, uniqueness: true, length: { maximum: 1000 }
     validates :category_id, numericality: { other_than: 0, message: "can't be blank" }
     validates :sales_status_id, numericality: { other_than: 0, message: "can't be blank" }
