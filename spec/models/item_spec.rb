@@ -40,27 +40,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include "Info is too long (maximum is 1000 characters)"
       end
       it 'カテゴリーが---では出品できない' do
-        @item.category_id = '---'
+        @item.category_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Category can't be blank"
       end
       it '商品の状態が---では出品できない' do
-        @item.sales_status_id = '---'
+        @item.sales_status_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Sales status can't be blank"
       end
       it '配送料の負担が---では出品できない' do
-        @item.shipping_fee_status_id = '---'
+        @item.shipping_fee_status_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Shipping fee status can't be blank"
       end
       it '発送元の地域が---では出品できない' do
-        @item.prefecture_id = '---'
+        @item.prefecture_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Prefecture can't be blank"
       end
       it '発送までの日程が---では出品できない' do
-        @item.scheduled_delivery_id = '---'
+        @item.scheduled_delivery_id = '0'
         @item.valid?
         expect(@item.errors.full_messages).to include "Scheduled delivery can't be blank"
       end
