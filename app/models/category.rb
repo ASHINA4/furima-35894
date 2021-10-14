@@ -12,7 +12,7 @@ class Category < ActiveHash::Base
     { id: 9, name: 'ハンドメイド' },
     { id: 10, name: 'その他' }
   ]
-    # itemsテーブルとのアソシエーション
-    include ActiveHash::Associations
-    has_many :items
-  end
+  # itemsテーブルとのアソシエーション
+  include ActiveHash::Associations
+  has_many :items
+end
