@@ -10,6 +10,6 @@ FactoryBot.define do
     scheduled_delivery_id { 1 }
     price { 300 }
 
-    association :user 
+    association :user
   end
 end
