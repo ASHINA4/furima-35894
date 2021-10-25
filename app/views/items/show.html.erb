@@ -32,8 +32,8 @@
     <%# //出品しているユーザーがログイン状態で観覧している場合 %>
 
     <%# 商品が売れていない、かつ出品していないユーザーがログイン状態で観覧している場合 %>
-    <% elsif user_signed_in? %>
-    <%= link_to "購入画面に進む", "#" ,class:"item-red-btn"%>
+    <% else user_signed_in? %>
+    <%= link_to "購入画面に進む", item_orders_path(@item.id) ,class:"item-red-btn"%>
     <%# //商品が売れていない、かつ出品していないユーザーがログイン状態で観覧している場合 %>
     
     <% end %>
