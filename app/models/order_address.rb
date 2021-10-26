@@ -13,7 +13,7 @@ class OrderAddress
     validates :prefecture_id, numericality: { other_than: 0 }
     validates :city
     validates :block
-    validates :phone_number, format: {with: /\A[0-9]{11}\z/ }
+    validates :phone_number, format: {with: /\A[0-9]{10,11}\z/ }
   end
   # /addressのバリデーション設定
 
