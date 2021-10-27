@@ -7,6 +7,7 @@ channels.keys().forEach(channels)
 function calc (){
   // id="item-priceの要素を取得。
   const itemPrice = document.getElementById("item-price");
+  if (!itemPrice){ return false;}
   // 値が入力された時にイベントを発火。
   itemPrice.addEventListener('input', function(){
     // 下記を追記して、要素の値を取得。
