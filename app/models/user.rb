@@ -14,7 +14,7 @@ class User < ApplicationRecord
   end
 
   validates :encrypted_password, :password, :password_confirmation,
-            presence: true, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/ }
+            presence: true, format: { with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{6,}/ }
 
   with_options presence: true, format: { with: /\A[ぁ-ゔァ-ヴ一-龥]+\z/ } do
     validates :last_name
