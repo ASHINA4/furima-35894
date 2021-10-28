@@ -25,8 +25,10 @@ class ItemsController < ApplicationController
 
   
   def edit
-    Order.exists?(item_id: [@item.id])
-    redirect_to root_path
+    if 
+      Order.exists?(item_id: [@item.id])
+      redirect_to root_path
+    end
   end
 
   def update
